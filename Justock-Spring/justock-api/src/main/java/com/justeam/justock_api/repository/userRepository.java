@@ -1,0 +1,24 @@
+package com.justeam.justock_api.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.justeam.justock_api.model.user;
+
+import jakarta.transaction.Transactional;
+import java.util.Optional;
+
+@Repository
+public interface userRepository extends JpaRepository<user, Long> {
+
+    Optional<user> findByEmail(String email);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE user u SET u.role = 'admin' WHERE u.id = :id")
+    void promote(@Param("id") Long id);
+
+}
