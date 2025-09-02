@@ -27,6 +27,8 @@ public class userCreateRequest {
     @NotBlank(message = "O campo confirmação de senha é obrigatório.")
     private String passwordConfirmation;
 
+    private String role;
+
     // Getters e Setters
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
@@ -39,5 +41,8 @@ public class userCreateRequest {
 
     public String getPasswordConfirmation() { return passwordConfirmation; }
     public void setPasswordConfirmation(String passwordConfirmation) { this.passwordConfirmation = passwordConfirmation; }
+
+    public String getRole() {return role;}
+    public void setRole(String role) {this.role = role;}
     
 }

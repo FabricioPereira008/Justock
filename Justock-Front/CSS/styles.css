@@ -1,0 +1,25 @@
+:root {
+    --primary-color: #5ca263;
+    --secondary-color: #305433;
+    --tertiary-color: #aacead;
+    --quaternary-color: #cccccc;
+    --background-color: #ffffff;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--primary-color);
+    background-image:url('../IMG/background.jpg');
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

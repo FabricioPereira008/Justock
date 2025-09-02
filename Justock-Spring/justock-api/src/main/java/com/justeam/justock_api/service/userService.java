@@ -34,7 +34,11 @@ public class userService {
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
-        user.setRole("USER");
+        if ("admin".equalsIgnoreCase(dto.getRole())) {
+            user.setRole("ADMIN");
+        } else {
+            user.setRole("USER");
+        }
         return userRepository.save(user);
     }
 
