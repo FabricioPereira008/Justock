@@ -19,7 +19,6 @@ public class userUpdateRequest {
         message = "A senha deve conter ao menos uma letra maiúscula, uma letra minúscula, um número e um símbolo."
     )
     private String password;
-
     private String passwordConfirmation;
 
     // Getters e Setters

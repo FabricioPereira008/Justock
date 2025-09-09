@@ -14,6 +14,7 @@ public class productCreateRequest {
 
     @NotNull(message = "O campo quantidade é obrigatório")
     @Min(value = 0, message = "A quantidade deve ser no mínimo 0")
+    
     private Integer quantidade;
 
     public String getNome() {

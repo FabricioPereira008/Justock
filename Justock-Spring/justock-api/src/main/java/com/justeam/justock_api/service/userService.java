@@ -68,4 +68,5 @@ public class userService {
     public void promoteuser(Long id) {
         userRepository.promote(id);
     }
+    
 }

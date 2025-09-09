@@ -22,6 +22,7 @@ public class userCreateRequest {
         regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&]).+$",
         message = "A senha deve conter ao menos uma letra maiúscula, uma letra minúscula, um número e um símbolo."
     )
+    
     private String password;
 
     @NotBlank(message = "O campo confirmação de senha é obrigatório.")

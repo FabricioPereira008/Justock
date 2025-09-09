@@ -20,5 +20,4 @@ public interface userRepository extends JpaRepository<user, Long> {
     @Transactional
     @Query("UPDATE user u SET u.role = 'admin' WHERE u.id = :id")
     void promote(@Param("id") Long id);
-
 }
