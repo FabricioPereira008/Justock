@@ -2,6 +2,8 @@ package com.justeam.justock_api.request;
 
 import jakarta.validation.constraints.*;
 
+import java.math.BigDecimal;
+
 public class productCreateRequest {
 
     @NotBlank(message = "O campo nome é obrigatório")
@@ -10,7 +12,7 @@ public class productCreateRequest {
 
     @NotNull(message = "O campo preço é obrigatório")
     @DecimalMin(value = "0.0", inclusive = false, message = "O preço deve ser maior que 0")
-    private Double preco;
+    private BigDecimal preco;
 
     @NotNull(message = "O campo quantidade é obrigatório")
     @Min(value = 0, message = "A quantidade deve ser no mínimo 0")
@@ -25,11 +27,11 @@ public class productCreateRequest {
         this.nome = nome;
     }
 
-    public Double getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco(Double preco) {
+    public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 

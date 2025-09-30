@@ -1,5 +1,7 @@
 package com.justeam.justock_api.request;
 
+import java.math.BigDecimal;
+
 import jakarta.validation.constraints.*;
 
 public class productUpdateRequest {
@@ -8,7 +10,7 @@ public class productUpdateRequest {
     private String nome;
 
     @DecimalMin(value = "0.0", inclusive = false, message = "O preço deve ser maior que 0")
-    private Double preco;
+    private BigDecimal preco;
 
     @Min(value = 0, message = "A quantidade deve ser no mínimo 0")
     private Integer quantidade;
@@ -21,11 +23,11 @@ public class productUpdateRequest {
         this.nome = nome;
     }
 
-    public Double getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco(Double preco) {
+    public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 

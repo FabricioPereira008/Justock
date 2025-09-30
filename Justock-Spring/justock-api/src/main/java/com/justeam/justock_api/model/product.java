@@ -3,6 +3,8 @@ package com.justeam.justock_api.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import java.math.BigDecimal;
+
 
 @Entity
 @Table(name = "products")
@@ -17,7 +19,7 @@ public class product {
     private String nome;
 
     @Column(nullable = false)
-    private Double preco;
+    private BigDecimal preco;
 
     @Column(nullable = false)
     private Integer quantidade;
