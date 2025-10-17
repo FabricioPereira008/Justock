@@ -1,8 +1,6 @@
 package com.justeam.justock_api.service;
 
 import com.justeam.justock_api.model.order;
-import com.justeam.justock_api.model.order;
-import com.justeam.justock_api.repository.orderRepository;
 import com.justeam.justock_api.repository.orderRepository;
 import com.justeam.justock_api.request.orderCreateRequest;
 

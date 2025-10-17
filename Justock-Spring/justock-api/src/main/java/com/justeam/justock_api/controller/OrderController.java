@@ -2,9 +2,6 @@ package com.justeam.justock_api.controller;
 
 import com.justeam.justock_api.dto.apiResponseDTO;
 import com.justeam.justock_api.dto.orderResponseDTO;
-import com.justeam.justock_api.dto.orderResponseDTO;
-import com.justeam.justock_api.dto.orderResponseDTO;
-import com.justeam.justock_api.model.order;
 import com.justeam.justock_api.model.order;
 import com.justeam.justock_api.request.orderCreateRequest;
 import com.justeam.justock_api.service.orderService;
