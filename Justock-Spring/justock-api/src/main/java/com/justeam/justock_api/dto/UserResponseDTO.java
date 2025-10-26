@@ -4,15 +4,17 @@ import lombok.Data;
 
 @Data
 public class UserResponseDTO {
-    private Long id;
-    private String name;
-    private String email;
-    private String role;
+    private int idUsuario;
+    private String nomeUsuario;
+    private String emailCorporativo;
+    private String numero;
+    private String senha;
 
-    public UserResponseDTO(Long id, String name, String email, String role) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.role = role;
+    public UserResponseDTO(int idUsuario, String nomeUsuario, String emailCorporativo, String numero, String senha) {
+        this.idUsuario = idUsuario;
+        this.nomeUsuario = nomeUsuario;
+        this.emailCorporativo = emailCorporativo;
+        this.numero = numero;
+        this.senha = senha;
     }
 }

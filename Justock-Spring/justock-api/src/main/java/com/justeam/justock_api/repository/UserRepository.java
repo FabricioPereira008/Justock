@@ -11,12 +11,8 @@ import jakarta.transaction.Transactional;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
-    Optional<User> findByEmail(String email);
+    Optional<User> findByEmailCorporativo(String email);
 
-    @Modifying
-    @Transactional
-    @Query("UPDATE User u SET u.role = 'admin' WHERE u.id = :id")
-    void promote(@Param("id") Long id);
 }

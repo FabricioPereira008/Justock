@@ -21,6 +21,8 @@ public class UserUpdateRequest {
     private String password;
     private String passwordConfirmation;
 
+    private String numero;
+
     // Getters e Setters
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
@@ -33,4 +35,7 @@ public class UserUpdateRequest {
 
     public String getPasswordConfirmation() { return passwordConfirmation; }
     public void setPasswordConfirmation(String passwordConfirmation) { this.passwordConfirmation = passwordConfirmation; }
+
+    public String getNumero() { return numero; }
+    public void setNumero(String numero) { this.numero = numero; }
 }

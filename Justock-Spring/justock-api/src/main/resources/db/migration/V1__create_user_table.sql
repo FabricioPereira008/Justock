@@ -1,11 +1,11 @@
-CREATE TABLE users (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    role VARCHAR(50)
+CREATE TABLE cliente (
+    id_usuario INTEGER PRIMARY KEY AUTO_INCREMENT,
+    nome_usuario VARCHAR(255) NOT NULL,
+    email_corporativo VARCHAR(255) NOT NULL UNIQUE,
+    numero VARCHAR(255),
+    senha VARCHAR(255) NOT NULL
 );
 
 
-INSERT INTO users (name, email, password, role) VALUES 
-('Admin Teste', 'admin@test.com', '123456', 'ADMIN');
+INSERT INTO cliente (nome_usuario, email_corporativo, numero, senha) VALUES
+('Admin Teste', 'admin@test.com', '123456789', '123456');
