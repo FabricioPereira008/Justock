@@ -17,52 +17,59 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/products")
+@CrossOrigin(origins = "*")
 public class ProductController {
 
     @Autowired
     private ProductService productService;
 
-    @GetMapping
+    // GET /api/products
+    @GetMapping("/")
     public ApiResponseDTO<List<ProductResponseDTO>> index() {
-        List<ProductResponseDTO> products = productService.listAllproducts()
-            .stream()
-            .map(p -> new ProductResponseDTO(p.getId(), p.getNome(), p.getPreco(), p.getQuantidade()))
-            .collect(Collectors.toList());
-
-        return new ApiResponseDTO<>(200, "Produtos encontrados!!", products);
+        List<ProductResponseDTO> products = productService.listAllProducts()
+                .stream()
+                .map(p -> new ProductResponseDTO(p.getIdProduto(), p.getCategoria(), p.getMarca(), p.getNomeDoProduto(), p.getEstado(), p.getPreco(), p.getCodigoDeBarras(), p.getQuantidade(), p.getQuantidadeReservada(), p.getMarcador(), p.getUsuario()))
+                .collect(Collectors.toList());
+        return new ApiResponseDTO<>(200, "Produtos encontrados!", products);
     }
 
-    @GetMapping("/{id}")
-    public ApiResponseDTO<ProductResponseDTO> show(@PathVariable Long id) {
-        Product p = productService.findproduct(id);
-        if (p == null) return new ApiResponseDTO<>(404, "Produto não encontrado!", null);
-
-        return new ApiResponseDTO<>(200, "Produto encontrado!!",
-                new ProductResponseDTO(p.getId(), p.getNome(), p.getPreco(), p.getQuantidade()));
+    // GET /api/products/visualizar/{id}
+    @GetMapping("/visualizar/{id}")
+    public ApiResponseDTO<ProductResponseDTO> show(@PathVariable Integer id) {
+        Product product = productService.findProduct(id);
+        if (product == null) {
+            return new ApiResponseDTO<>(404, "Produto não encontrado!", null);
+        }
+        ProductResponseDTO dto = new ProductResponseDTO(product.getIdProduto(), product.getCategoria(), product.getMarca(), product.getNomeDoProduto(), product.getEstado(), product.getPreco(), product.getCodigoDeBarras(), product.getQuantidade(), product.getQuantidadeReservada(), product.getMarcador(), product.getUsuario());
+        return new ApiResponseDTO<>(200, "Produto encontrado!", dto);
     }
 
-    @PostMapping
-    public ApiResponseDTO<ProductResponseDTO> store(@Valid @RequestBody ProductCreateRequest dto) {
-        Product p = productService.createproduct(dto);
-        return new ApiResponseDTO<>(200, "Produto cadastrado com sucesso!!",
-                new ProductResponseDTO(p.getId(), p.getNome(), p.getPreco(), p.getQuantidade()));
+    // POST /api/products/cadastrar
+    @PostMapping("/cadastrar")
+    public ApiResponseDTO<ProductResponseDTO> store(@Valid @RequestBody ProductCreateRequest request) {
+        Product product = productService.createProduct(request);
+        ProductResponseDTO dto = new ProductResponseDTO(product.getIdProduto(), product.getCategoria(), product.getMarca(), product.getNomeDoProduto(), product.getEstado(), product.getPreco(), product.getCodigoDeBarras(), product.getQuantidade(), product.getQuantidadeReservada(), product.getMarcador(), product.getUsuario());
+        return new ApiResponseDTO<>(200, "Produto cadastrado com sucesso!", dto);
     }
 
-    @PutMapping("/{id}")
-    public ApiResponseDTO<ProductResponseDTO> update(@PathVariable Long id,
-                                                     @Valid @RequestBody ProductUpdateRequest dto) {
-        Product p = productService.updateproduct(id, dto);
-        if (p == null) return new ApiResponseDTO<>(404, "Produto não encontrado!", null);
-
-        return new ApiResponseDTO<>(200, "Produto atualizado!!",
-                new ProductResponseDTO(p.getId(), p.getNome(), p.getPreco(), p.getQuantidade()));
+    // PUT /api/products/atualizar/{id}
+    @PutMapping("/atualizar/{id}")
+    public ApiResponseDTO<ProductResponseDTO> update(@PathVariable Integer id, @Valid @RequestBody ProductUpdateRequest request) {
+        Product product = productService.updateProduct(id, request);
+        if (product == null) {
+            return new ApiResponseDTO<>(404, "Produto não encontrado!", null);
+        }
+        ProductResponseDTO dto = new ProductResponseDTO(product.getIdProduto(), product.getCategoria(), product.getMarca(), product.getNomeDoProduto(), product.getEstado(), product.getPreco(), product.getCodigoDeBarras(), product.getQuantidade(), product.getQuantidadeReservada(), product.getMarcador(), product.getUsuario());
+        return new ApiResponseDTO<>(200, "Produto atualizado!", dto);
     }
 
-    @DeleteMapping("/{id}")
-    public ApiResponseDTO<Void> destroy(@PathVariable Long id) {
-        boolean deleted = productService.deleteproduct(id);
-        if (!deleted) return new ApiResponseDTO<>(404, "Produto não encontrado!", null);
-
-        return new ApiResponseDTO<>(200, "Produto deletado!!", null);
+    // DELETE /api/products/deletar/{id}
+    @DeleteMapping("/deletar/{id}")
+    public ApiResponseDTO<Void> destroy(@PathVariable Integer id) {
+        boolean deleted = productService.deleteProduct(id);
+        if (!deleted) {
+            return new ApiResponseDTO<>(404, "Produto não encontrado!", null);
+        }
+        return new ApiResponseDTO<>(200, "Produto deletado!", null);
     }
 }

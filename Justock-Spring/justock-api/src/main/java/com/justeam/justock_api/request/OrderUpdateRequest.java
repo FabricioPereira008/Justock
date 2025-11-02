@@ -2,7 +2,7 @@ package com.justeam.justock_api.request;
 
 import java.time.LocalDate;
 
-public class OrderCreateRequest {
+public class OrderUpdateRequest {
 
     private String idPedidoMarketplace;
     private Integer usuarioMarketplaceId;

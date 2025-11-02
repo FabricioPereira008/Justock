@@ -1,26 +1,46 @@
 package com.justeam.justock_api.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import java.math.BigDecimal;
 
-
 @Entity
-@Table(name = "products")
-@Getter @Setter
+@Table(name = "estoque")
+@Data
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_produto")
+    private Integer idProduto;
 
-    @Column(length = 50, nullable = false)
-    private String nome;
+    @Column(name = "categoria", nullable = false)
+    private String categoria;
 
-    @Column(nullable = false)
+    @Column(name = "marca", nullable = false)
+    private String marca;
+
+    @Column(name = "nome_do_produto", nullable = false)
+    private String nomeDoProduto;
+
+    @Column(name = "estado", nullable = false)
+    private String estado;
+
+    @Column(name = "preco", nullable = false)
     private BigDecimal preco;
 
-    @Column(nullable = false)
+    @Column(name = "codigo_de_barras", nullable = false)
+    private String codigoDeBarras;
+
+    @Column(name = "quantidade", nullable = false)
     private Integer quantidade;
+
+    @Column(name = "quantidade_reservada", nullable = false)
+    private Integer quantidadeReservada;
+
+    @Column(name = "marcador", nullable = false)
+    private String marcador;
+
+    @Column(name = "usuario", nullable = false)
+    private Integer usuario;
 }

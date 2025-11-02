@@ -1,33 +1,34 @@
 package com.justeam.justock_api.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import java.math.BigDecimal;
+import lombok.Data;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "orders")
-@Getter @Setter
+@Table(name = "pedido")
+@Data
 public class Order {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name = "id_pedido")
+    private int idPedido;
 
-    @Column(nullable = false)
-    private int quantidade;
+    @Column(name = "id_pedido_marketplace", nullable = true)
+    private String idPedidoMarketplace;
 
-    @Column(nullable = false)
-    private BigDecimal precoUnitario;
+    @Column(name = "usuario_marketplace_id", nullable = true)
+    private Integer usuarioMarketplaceId;
 
-    @Column(nullable = false)
-    private BigDecimal subtotal;
+    @Column(name = "data_entrega", nullable = true)
+    private LocalDate dataEntrega;
 
-    @Column(nullable = false)
-    private long idItemMarketplace;
+    @Column(name = "data_emissao", nullable = true)
+    private LocalDate dataEmissao;
 
-    @Column(nullable = false)
-    private String status;
+    @Column(name = "status_pagamento", nullable = true)
+    private String statusPagamento;
 
-    
+    @Column(name = "status_pedido", nullable = true)
+    private String statusPedido;
 }
